@@ -45,7 +45,7 @@ export default function App(): JSX.Element {
         </h1>
         <p style={styles.text}>
           Welcome to the <b>Special Time Offer 🎁</b> – your exclusive chance to grab a 
-          <b>₹100 Cashback on HungerBox</b>. This offer is valid only for a limited period, 
+          <b> ₹100 Cashback on HungerBox</b>. This offer is valid only for a limited period, 
           and by participating, you agree to the terms and conditions laid out below. 
           Please make sure you scroll and carefully read everything before proceeding.
         </p>
@@ -92,6 +92,10 @@ export default function App(): JSX.Element {
         </p>
 
         <p style={styles.discreetWarning}>
+          This promotional content is entirely fictional and created solely for demonstrative or prank-related purposes. It is not, in any manner whatsoever, affiliated with, endorsed by, or connected to HungerBox, its official applications, services, or brand identity. Nothing stated herein shall be interpreted as a genuine offer, nor should it be construed as an attempt to represent, imitate, or tarnish the reputation, goodwill, or operations of HungerBox or its associated entities.
+        </p>
+
+        <p style={styles.discreetWarning}>
           By proceeding, the participant acknowledges that this promotional construct, being of a nature akin to a conceptual or demonstrative prank scenario, may constitute a non-substantive engagement mechanism wherein any perceived benefit, including but not limited to cashback or equivalent monetary value, is of illustrative intent only and shall not, under any interpretation, be deemed an enforceable claim, thereby implying that acceptance may not align with the participant’s reasonable expectations of actual reward distribution.
         </p>
 
@@ -114,7 +118,13 @@ export default function App(): JSX.Element {
               backgroundColor: checked ? "#4f46e5" : "#999",
               cursor: checked ? "pointer" : "not-allowed",
             }}
-            onClick={() => checked && setStep("accepted")}
+            onClick={() => {
+              if(checked){
+                setStep("accepted")
+                console.log("Accepted!!")
+              }
+              }
+            }
             disabled={!checked}
           >
             Accept
