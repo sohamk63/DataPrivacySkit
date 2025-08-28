@@ -2,6 +2,8 @@ import { useState, type JSX } from "react";
 
 type Step = "tnc" | "accepted";
 
+
+
 export default function App(): JSX.Element {
   const [step, setStep] = useState<Step>("tnc");
   const [checked, setChecked] = useState(false);
@@ -118,13 +120,12 @@ export default function App(): JSX.Element {
               backgroundColor: checked ? "#4f46e5" : "#999",
               cursor: checked ? "pointer" : "not-allowed",
             }}
-            onClick={() => {
-              if(checked){
-                setStep("accepted")
-                console.log("Accepted!!")
+            onClick={async () => {
+              if (checked) {
+                await fetch("/api/accept", { method: "POST" });
+                setStep("accepted");
               }
-              }
-            }
+            }}
             disabled={!checked}
           >
             Accept
